@@ -89,7 +89,7 @@ class PolypnetEngine:
             
             M = cv2.moments(cnt)
             cx = int(M['m10']/M['m00'])
-            cy = int(M['m01']/M['m00']
+            cy = int(M['m01']/M['m00'])
             cnt[:, :, 0] = cnt[:, :, 0] * coef_x
             cnt[:, :, 1] = cnt[:, :,  1] * coef_y
 
