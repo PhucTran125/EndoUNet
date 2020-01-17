@@ -33,11 +33,10 @@ class PolypnetEngine:
         if isinstance(requests, PolypDetectionRequest):
             requests = [requests]
         
-        images, orig_images, orig_shapes = [], [], []
+        images, orig_shapes = [], []
         for req in requests:
             img = req.image.content
             img = vdimg.load_img(img)
-            orig_images.append(self.preprocessor(img))
             orig_shapes.append(img.shape)
             img = cv2.resize(img, self.input_shape)
             img = self.preprocessor(img)
@@ -62,11 +61,14 @@ class PolypnetEngine:
         return responses
 
     def polyps_from_mask(self, mask, orig_shape):
-        mask = cv2.resize(mask, orig_shape[:2], interpolation=cv2.INTER_LINEAR)
+        coef_y = orig_shape[0] / self.input_shape[0]
+        coef_x = orig_shape[1] / self.input_shape[1]
 
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5, 5))
         mask = cv2.dilate(mask, kernel, iterations=5)
         mask = cv2.erode(mask, kernel, iterations=5)
+        # mask = cv2.resize(mask, orig_shape[:2], interpolation=cv2.INTER_LINEAR)
+
         _, thresh = cv2.threshold(mask[:, :, 0], 50, 255, 0)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -85,6 +87,12 @@ class PolypnetEngine:
             if weight / area <= self.min_size or np.max(tmp) <= 2 * self.min_size:
                 continue
             
+            M = cv2.moments(cnt)
+            cx = int(M['m10']/M['m00'])
+            cy = int(M['m01']/M['m00']
+            cnt[:, :, 0] = cnt[:, :, 0] * coef_x
+            cnt[:, :, 1] = cnt[:, :,  1] * coef_y
+
             # Convert contour to object
             bounding_poly = []
             for i in range(cnt.shape[0]):
