@@ -22,5 +22,4 @@ ARG VDIMG_VERSION="v0.1.1"
 RUN pip3 install git+https://bitbucket.org/vdsenseplatform/vdimg.git@${VDIMG_VERSION}
 
 COPY . /app
-EXPOSE 50001
-CMD python3 detect_server.py
+CMD python3 server.py
