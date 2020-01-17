@@ -1,0 +1,10 @@
+{
+    "engine": {
+        "model_dir": "models/polypnet-200116",
+        "backbone": "efficientnetb4",
+        "min_size": 100
+    },
+    "workers": 2,
+    "concurrency": 1,
+    "port": 12001
+}

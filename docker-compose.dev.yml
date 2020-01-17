@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+  server:
+    volumes:
+      - type: bind
+        target: /app
+        source: ./
+    command: watchmedo auto-restart -d . --interval 3 -- python3 server.py
+    restart: on-failure
+    environment: 
+      - GRPC_VERBOSITY=DEBUG
+      - GRPC_TRACE=http
