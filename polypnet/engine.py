@@ -5,6 +5,8 @@ import segmentation_models as sm
 import tensorflow as tf
 import vdimg
 
+from loguru import logger
+
 from polypnet.grpc.detect_pb2 import Point, PolypDetectionResponse, Polyp, PolypDetectionRequest
 
 
@@ -73,11 +75,11 @@ class PolypnetEngine:
         _, thresh = cv2.threshold(mask[:, :, 0], 50, 255, 0)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-        import pdb
         polyps = []
         for cnt in contours:
             area = cv2.contourArea(cnt)
             if area < self.min_size:
+                logger.debug('too small')
                 continue
             tmp = mask.copy()
             separate = np.zeros_like(mask)
@@ -86,6 +88,7 @@ class PolypnetEngine:
             weight = np.sum(tmp)
 
             if weight / area <= self.min_size or np.max(tmp) <= self.threshold:
+                logger.debug('under threshold')
                 continue
             
             # Scale contour to original size

@@ -9,4 +9,5 @@ services:
     ports: 
       - 12001:12001
     volumes:
+      - ./configs:/app/configs
       - ./models:/app/models
