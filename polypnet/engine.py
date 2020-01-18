@@ -11,10 +11,12 @@ from polypnet.grpc.detect_pb2 import Point, PolypDetectionResponse, Polyp, Polyp
 class PolypnetEngine:
     def __init__(self, model_dir, backbone='efficientnetb4', 
         classes=['polyp'], encoder_freeze=True,
-        min_size=100, input_shape=(512, 512)):
+        min_size=100, input_shape=(512, 512),
+        threshold=200):
         self.__graph = tf.Graph()
         self.__sess = tf.Session(graph=self.__graph)
 
+        self.threshold = threshold
         self.input_shape = input_shape
         self.min_size = min_size
         self.classes = classes
@@ -67,7 +69,6 @@ class PolypnetEngine:
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5, 5))
         mask = cv2.dilate(mask, kernel, iterations=5)
         mask = cv2.erode(mask, kernel, iterations=5)
-        # mask = cv2.resize(mask, orig_shape[:2], interpolation=cv2.INTER_LINEAR)
 
         _, thresh = cv2.threshold(mask[:, :, 0], 50, 255, 0)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -84,9 +85,10 @@ class PolypnetEngine:
             tmp[separate < 255] = 0
             weight = np.sum(tmp)
 
-            if weight / area <= self.min_size or np.max(tmp) <= 2 * self.min_size:
+            if weight / area <= self.min_size or np.max(tmp) <= self.threshold:
                 continue
             
+            # Scale contour to original size
             M = cv2.moments(cnt)
             cx = int(M['m10']/M['m00'])
             cy = int(M['m01']/M['m00'])

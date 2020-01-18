@@ -2,7 +2,8 @@
     "engine": {
         "model_dir": "models/polypnet-200118",
         "backbone": "efficientnetb4",
-        "min_size": 100
+        "min_size": 100,
+        "threshold": 200
     },
     "workers": 2,
     "concurrency": 1,
