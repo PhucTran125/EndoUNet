@@ -7,3 +7,5 @@ grpcio==1.26.0
 grpcio-tools==1.26.0
 segmentation_models==1.0.1
 watchdog
+argh
+pyyaml
