@@ -26,7 +26,7 @@ test: build
 		run --rm worker pytest --cov=. tests/
 
 pull-models:
-	gsutil rsync -R gs://polypnet-models/polypnet ./models
+	gsutil rsync -R gs://vdsense-model-repo/polypnet-models/polypnet ./models
 
 push-models:
-	gsutil rsync -R ./models gs://polypnet-models/polypnet
+	gsutil rsync -R ./models gs://vdsense-model-repo/polypnet-models/polypnet
