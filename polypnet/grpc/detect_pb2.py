@@ -17,10 +17,10 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='detect.proto',
-  package='',
+  package='com.vdsense.polypnet.proto',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0c\x64\x65tect.proto\"\x18\n\x05Image\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\".\n\x15PolypDetectionRequest\x12\x15\n\x05image\x18\x01 \x01(\x0b\x32\x06.Image\"F\n\x1a\x42\x61tchPolypDetectionRequest\x12(\n\x08requests\x18\x01 \x03(\x0b\x32\x16.PolypDetectionRequest\"\x1d\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"9\n\x05Polyp\x12\x1c\n\x0c\x62oundingPoly\x18\x01 \x03(\x0b\x32\x06.Point\x12\x12\n\nconfidence\x18\x02 \x01(\x02\"0\n\x16PolypDetectionResponse\x12\x16\n\x06polyps\x18\x01 \x03(\x0b\x32\x06.Polyp\"I\n\x1b\x42\x61tchPolypDetectionResponse\x12*\n\tresponses\x18\x01 \x03(\x0b\x32\x17.PolypDetectionResponse2\xb0\x01\n\x15PolypDetectionService\x12M\n\x10\x42\x61tchPolypDetect\x12\x1b.BatchPolypDetectionRequest\x1a\x1c.BatchPolypDetectionResponse\x12H\n\x11StreamPolypDetect\x12\x16.PolypDetectionRequest\x1a\x17.PolypDetectionResponse(\x01\x30\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0c\x64\x65tect.proto\x12\x1a\x63om.vdsense.polypnet.proto\"\x18\n\x05Image\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\"I\n\x15PolypDetectionRequest\x12\x30\n\x05image\x18\x01 \x01(\x0b\x32!.com.vdsense.polypnet.proto.Image\"a\n\x1a\x42\x61tchPolypDetectionRequest\x12\x43\n\x08requests\x18\x01 \x03(\x0b\x32\x31.com.vdsense.polypnet.proto.PolypDetectionRequest\"\x1d\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"T\n\x05Polyp\x12\x37\n\x0c\x62oundingPoly\x18\x01 \x03(\x0b\x32!.com.vdsense.polypnet.proto.Point\x12\x12\n\nconfidence\x18\x02 \x01(\x02\"K\n\x16PolypDetectionResponse\x12\x31\n\x06polyps\x18\x01 \x03(\x0b\x32!.com.vdsense.polypnet.proto.Polyp\"d\n\x1b\x42\x61tchPolypDetectionResponse\x12\x45\n\tresponses\x18\x01 \x03(\x0b\x32\x32.com.vdsense.polypnet.proto.PolypDetectionResponse2\x9d\x02\n\x15PolypDetectionService\x12\x83\x01\n\x10\x42\x61tchPolypDetect\x12\x36.com.vdsense.polypnet.proto.BatchPolypDetectionRequest\x1a\x37.com.vdsense.polypnet.proto.BatchPolypDetectionResponse\x12~\n\x11StreamPolypDetect\x12\x31.com.vdsense.polypnet.proto.PolypDetectionRequest\x1a\x32.com.vdsense.polypnet.proto.PolypDetectionResponse(\x01\x30\x01\x62\x06proto3')
 )
 
 
@@ -28,13 +28,13 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _IMAGE = _descriptor.Descriptor(
   name='Image',
-  full_name='Image',
+  full_name='com.vdsense.polypnet.proto.Image',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='content', full_name='Image.content', index=0,
+      name='content', full_name='com.vdsense.polypnet.proto.Image.content', index=0,
       number=1, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
@@ -52,20 +52,20 @@ _IMAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16,
-  serialized_end=40,
+  serialized_start=44,
+  serialized_end=68,
 )
 
 
 _POLYPDETECTIONREQUEST = _descriptor.Descriptor(
   name='PolypDetectionRequest',
-  full_name='PolypDetectionRequest',
+  full_name='com.vdsense.polypnet.proto.PolypDetectionRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='image', full_name='PolypDetectionRequest.image', index=0,
+      name='image', full_name='com.vdsense.polypnet.proto.PolypDetectionRequest.image', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -83,20 +83,20 @@ _POLYPDETECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42,
-  serialized_end=88,
+  serialized_start=70,
+  serialized_end=143,
 )
 
 
 _BATCHPOLYPDETECTIONREQUEST = _descriptor.Descriptor(
   name='BatchPolypDetectionRequest',
-  full_name='BatchPolypDetectionRequest',
+  full_name='com.vdsense.polypnet.proto.BatchPolypDetectionRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='requests', full_name='BatchPolypDetectionRequest.requests', index=0,
+      name='requests', full_name='com.vdsense.polypnet.proto.BatchPolypDetectionRequest.requests', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -114,27 +114,27 @@ _BATCHPOLYPDETECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=90,
-  serialized_end=160,
+  serialized_start=145,
+  serialized_end=242,
 )
 
 
 _POINT = _descriptor.Descriptor(
   name='Point',
-  full_name='Point',
+  full_name='com.vdsense.polypnet.proto.Point',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='x', full_name='Point.x', index=0,
+      name='x', full_name='com.vdsense.polypnet.proto.Point.x', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='y', full_name='Point.y', index=1,
+      name='y', full_name='com.vdsense.polypnet.proto.Point.y', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -152,27 +152,27 @@ _POINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=162,
-  serialized_end=191,
+  serialized_start=244,
+  serialized_end=273,
 )
 
 
 _POLYP = _descriptor.Descriptor(
   name='Polyp',
-  full_name='Polyp',
+  full_name='com.vdsense.polypnet.proto.Polyp',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='boundingPoly', full_name='Polyp.boundingPoly', index=0,
+      name='boundingPoly', full_name='com.vdsense.polypnet.proto.Polyp.boundingPoly', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='confidence', full_name='Polyp.confidence', index=1,
+      name='confidence', full_name='com.vdsense.polypnet.proto.Polyp.confidence', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
@@ -190,20 +190,20 @@ _POLYP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=250,
+  serialized_start=275,
+  serialized_end=359,
 )
 
 
 _POLYPDETECTIONRESPONSE = _descriptor.Descriptor(
   name='PolypDetectionResponse',
-  full_name='PolypDetectionResponse',
+  full_name='com.vdsense.polypnet.proto.PolypDetectionResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='polyps', full_name='PolypDetectionResponse.polyps', index=0,
+      name='polyps', full_name='com.vdsense.polypnet.proto.PolypDetectionResponse.polyps', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -221,20 +221,20 @@ _POLYPDETECTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=252,
-  serialized_end=300,
+  serialized_start=361,
+  serialized_end=436,
 )
 
 
 _BATCHPOLYPDETECTIONRESPONSE = _descriptor.Descriptor(
   name='BatchPolypDetectionResponse',
-  full_name='BatchPolypDetectionResponse',
+  full_name='com.vdsense.polypnet.proto.BatchPolypDetectionResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='responses', full_name='BatchPolypDetectionResponse.responses', index=0,
+      name='responses', full_name='com.vdsense.polypnet.proto.BatchPolypDetectionResponse.responses', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -252,8 +252,8 @@ _BATCHPOLYPDETECTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=302,
-  serialized_end=375,
+  serialized_start=438,
+  serialized_end=538,
 )
 
 _POLYPDETECTIONREQUEST.fields_by_name['image'].message_type = _IMAGE
@@ -273,49 +273,49 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 Image = _reflection.GeneratedProtocolMessageType('Image', (_message.Message,), {
   'DESCRIPTOR' : _IMAGE,
   '__module__' : 'detect_pb2'
-  # @@protoc_insertion_point(class_scope:Image)
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.Image)
   })
 _sym_db.RegisterMessage(Image)
 
 PolypDetectionRequest = _reflection.GeneratedProtocolMessageType('PolypDetectionRequest', (_message.Message,), {
   'DESCRIPTOR' : _POLYPDETECTIONREQUEST,
   '__module__' : 'detect_pb2'
-  # @@protoc_insertion_point(class_scope:PolypDetectionRequest)
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.PolypDetectionRequest)
   })
 _sym_db.RegisterMessage(PolypDetectionRequest)
 
 BatchPolypDetectionRequest = _reflection.GeneratedProtocolMessageType('BatchPolypDetectionRequest', (_message.Message,), {
   'DESCRIPTOR' : _BATCHPOLYPDETECTIONREQUEST,
   '__module__' : 'detect_pb2'
-  # @@protoc_insertion_point(class_scope:BatchPolypDetectionRequest)
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.BatchPolypDetectionRequest)
   })
 _sym_db.RegisterMessage(BatchPolypDetectionRequest)
 
 Point = _reflection.GeneratedProtocolMessageType('Point', (_message.Message,), {
   'DESCRIPTOR' : _POINT,
   '__module__' : 'detect_pb2'
-  # @@protoc_insertion_point(class_scope:Point)
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.Point)
   })
 _sym_db.RegisterMessage(Point)
 
 Polyp = _reflection.GeneratedProtocolMessageType('Polyp', (_message.Message,), {
   'DESCRIPTOR' : _POLYP,
   '__module__' : 'detect_pb2'
-  # @@protoc_insertion_point(class_scope:Polyp)
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.Polyp)
   })
 _sym_db.RegisterMessage(Polyp)
 
 PolypDetectionResponse = _reflection.GeneratedProtocolMessageType('PolypDetectionResponse', (_message.Message,), {
   'DESCRIPTOR' : _POLYPDETECTIONRESPONSE,
   '__module__' : 'detect_pb2'
-  # @@protoc_insertion_point(class_scope:PolypDetectionResponse)
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.PolypDetectionResponse)
   })
 _sym_db.RegisterMessage(PolypDetectionResponse)
 
 BatchPolypDetectionResponse = _reflection.GeneratedProtocolMessageType('BatchPolypDetectionResponse', (_message.Message,), {
   'DESCRIPTOR' : _BATCHPOLYPDETECTIONRESPONSE,
   '__module__' : 'detect_pb2'
-  # @@protoc_insertion_point(class_scope:BatchPolypDetectionResponse)
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.BatchPolypDetectionResponse)
   })
 _sym_db.RegisterMessage(BatchPolypDetectionResponse)
 
@@ -323,16 +323,16 @@ _sym_db.RegisterMessage(BatchPolypDetectionResponse)
 
 _POLYPDETECTIONSERVICE = _descriptor.ServiceDescriptor(
   name='PolypDetectionService',
-  full_name='PolypDetectionService',
+  full_name='com.vdsense.polypnet.proto.PolypDetectionService',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=378,
-  serialized_end=554,
+  serialized_start=541,
+  serialized_end=826,
   methods=[
   _descriptor.MethodDescriptor(
     name='BatchPolypDetect',
-    full_name='PolypDetectionService.BatchPolypDetect',
+    full_name='com.vdsense.polypnet.proto.PolypDetectionService.BatchPolypDetect',
     index=0,
     containing_service=None,
     input_type=_BATCHPOLYPDETECTIONREQUEST,
@@ -341,7 +341,7 @@ _POLYPDETECTIONSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='StreamPolypDetect',
-    full_name='PolypDetectionService.StreamPolypDetect',
+    full_name='com.vdsense.polypnet.proto.PolypDetectionService.StreamPolypDetect',
     index=1,
     containing_service=None,
     input_type=_POLYPDETECTIONREQUEST,
