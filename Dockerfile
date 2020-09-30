@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y git\
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-ARG TF_VERSION="tensorflow==1.13.1"
+RUN pip3 install --upgrade pip
+ARG TF_VERSION="tensorflow==1.15.0"
 RUN pip3 install ${TF_VERSION}
 
 WORKDIR /app

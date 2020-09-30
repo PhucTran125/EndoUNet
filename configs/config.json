@@ -1,7 +1,7 @@
 {
     "engine": {
-        "model_dir": "models/polypnet-200205",
-        "backbone": "efficientnetb0",
+        "model_dir": "models/polypnet-b4-200930",
+        "backbone": "efficientnetb4",
         "min_size": 100,
         "threshold": 200
     },

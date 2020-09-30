@@ -1,0 +1,37 @@
+syntax = "proto3";
+package com.vdsense.polypnet.proto;
+
+message Image {
+    bytes content = 1;
+}
+
+message PolypDetectionRequest {
+    Image image = 1;
+}
+
+message BatchPolypDetectionRequest {
+    repeated PolypDetectionRequest requests = 1;
+}
+
+message Point {
+    int32 x = 1;
+    int32 y = 2;
+}
+
+message Polyp {
+    repeated Point boundingPoly = 1;
+    float confidence = 2;
+}
+
+message PolypDetectionResponse {
+    repeated Polyp polyps = 1;
+}
+
+message BatchPolypDetectionResponse {
+    repeated PolypDetectionResponse responses = 1;
+}
+
+service PolypDetectionService {
+    rpc BatchPolypDetect(BatchPolypDetectionRequest) returns (BatchPolypDetectionResponse);
+    rpc StreamPolypDetect(stream PolypDetectionRequest) returns (stream PolypDetectionResponse);
+}

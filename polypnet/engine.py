@@ -11,10 +11,11 @@ from polypnet.grpc.detect_pb2 import Point, PolypDetectionResponse, Polyp, Polyp
 
 
 class PolypnetEngine:
-    def __init__(self, model_dir, backbone='efficientnetb4', 
+    def __init__(self, model_dir, backbone='efficientnetb4',
         classes=['polyp'], encoder_freeze=True,
         min_size=100, input_shape=(512, 512),
-        threshold=200):
+        threshold=200
+    ):
         self.__graph = tf.Graph()
         self.__sess = tf.Session(graph=self.__graph)
 
@@ -36,7 +37,7 @@ class PolypnetEngine:
     def predict_polyps(self, requests):
         if isinstance(requests, PolypDetectionRequest):
             requests = [requests]
-        
+
         images, orig_shapes = [], []
         for req in requests:
             img = req.image.content
@@ -45,9 +46,9 @@ class PolypnetEngine:
             img = cv2.resize(img, self.input_shape)
             img = self.preprocessor(img)
             images.append(img)
-        
+
         images_batch = np.stack(images, axis=0)
-        
+
         with self.__sess.as_default():
             with self.__graph.as_default():
                 masks = self.model.predict(images_batch)
@@ -90,7 +91,7 @@ class PolypnetEngine:
             if weight / area <= self.min_size or np.max(tmp) <= self.threshold:
                 logger.debug('under threshold')
                 continue
-            
+
             # Scale contour to original size
             M = cv2.moments(cnt)
             cx = int(M['m10']/M['m00'])
@@ -107,7 +108,7 @@ class PolypnetEngine:
 
             polyp = Polyp(boundingPoly=bounding_poly, confidence=0.9)
             polyps.append(polyp)
-        
+
         return polyps
 
 
