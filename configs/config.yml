@@ -1,8 +1,15 @@
+# engine:
+#   type: tf
+#   kwargs:
+#     model_dir: models/polypnet-200205
+#     backbone: efficientnetb0
+#     min_size: 100
+#     threshold: 200
+
 engine:
-  type: tf
+  type: onnx
   kwargs:
-    model_dir: models/polypnet-200205
-    backbone: efficientnetb0
+    model_dir: models/polypnet-b4-onnx-201008
     min_size: 100
     threshold: 200
 
