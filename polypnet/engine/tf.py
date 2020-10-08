@@ -7,10 +7,13 @@ import vdimg
 
 from loguru import logger
 
-from polypnet.grpc.detect_pb2 import Point, PolypDetectionResponse, Polyp, PolypDetectionRequest
+from polypnet.grpc.detect_pb2 import Point, PolypDetectionResponse,\
+    Polyp, PolypDetectionRequest, BatchPolypDetectionRequest,\
+    BatchPolypDetectionResponse
+from .base import IPolypnetEngine
 
 
-class PolypnetEngine:
+class TensorflowPolypnetEngine(IPolypnetEngine):
     def __init__(self, model_dir, backbone='efficientnetb4',
         classes=['polyp'], encoder_freeze=True,
         min_size=100, input_shape=(512, 512),
@@ -34,14 +37,12 @@ class PolypnetEngine:
                     encoder_freeze=encoder_freeze, weights=os.path.join(model_dir, 'weights.h5'),
                     encoder_weights=None)
 
-    def predict_polyps(self, requests):
-        if isinstance(requests, PolypDetectionRequest):
-            requests = [requests]
+    def predict_polyps(self, batch_request: BatchPolypDetectionRequest) -> BatchPolypDetectionResponse:
+        requests = batch_request.requests
 
         images, orig_shapes = [], []
         for req in requests:
-            img = req.image.content
-            img = vdimg.load_img(img)
+            img = vdimg.load_img(req.image.content)
             orig_shapes.append(img.shape)
             img = cv2.resize(img, self.input_shape)
             img = self.preprocessor(img)
@@ -63,7 +64,7 @@ class PolypnetEngine:
             resp = PolypDetectionResponse(polyps=polyps)
             responses.append(resp)
 
-        return responses
+        return BatchPolypDetectionResponse(responses=responses)
 
     def polyps_from_mask(self, mask, orig_shape):
         coef_y = orig_shape[0] / self.input_shape[0]

@@ -1,3 +1,13 @@
+build-proto: proto/detect.proto
+	python -m grpc_tools.protoc -Iproto\
+		--python_out=polypnet/grpc\
+		--grpc_python_out=polypnet/grpc\
+		--mypy_out=polypnet/grpc\
+		proto/*.proto
+
+	# Fix import
+	sed -i 's/import detect_pb2/from polypnet.grpc import detect_pb2/g' polypnet/grpc/*.py
+
 build:
 	docker-compose build
 

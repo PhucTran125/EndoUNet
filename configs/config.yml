@@ -1,0 +1,11 @@
+engine:
+  type: tf
+  kwargs:
+    model_dir: models/polypnet-200205
+    backbone: efficientnetb0
+    min_size: 100
+    threshold: 200
+
+workers: 2
+concurrency: 1
+port: 12001

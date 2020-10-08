@@ -11,6 +11,10 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 RUN pip3 install --upgrade pip
+
+# Reinstall grpcio to allow reuseport
+RUN pip3 install --upgrade grpcio==1.32 --no-binary grpcio
+
 ARG TF_VERSION="tensorflow==1.15.0"
 RUN pip3 install ${TF_VERSION}
 
@@ -20,7 +24,7 @@ COPY requirements.txt /app/
 RUN pip3 install -r requirements.txt
 
 ARG VDIMG_VERSION="v0.1.1"
-RUN pip3 install git+https://bitbucket.org/vdsenseplatform/vdimg.git@${VDIMG_VERSION}
+RUN pip3 install git+https://vcs.vdsense.com/vdsense/vdimg.git@${VDIMG_VERSION}
 
 COPY . /app
 CMD python3 server.py
