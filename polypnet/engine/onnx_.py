@@ -48,12 +48,16 @@ class OnnxPolypnetEngine(IPolypnetEngine):
         images_bytes = [req.image.content for req in requests]
         images, orig_shapes = self.__preprocess(images_bytes)
 
-        feed = dict([
-            (input.name, images[n])
-            for n, input in enumerate(self.__sess.get_inputs())
-        ])
-        masks = self.__sess.run(None, feed)[0]
+        masks_list = []
+        for image in images:
+            input = self.__sess.get_inputs()[0]
+            feed = {
+                input.name: image
+            }
+            mask = self.__sess.run(None, feed)[0][0,...]
+            masks_list.append(mask)
 
+        masks = np.stack(masks_list, axis=0)
         masks = np.uint8(masks * 255)
         masks = masks[:, :, :, 0]
         masks = np.stack((masks,) * 3, axis=-1)

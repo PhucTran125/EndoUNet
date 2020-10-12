@@ -8,6 +8,4 @@ services:
         source: ./
     command: watchmedo auto-restart -d . --interval 3 -- python3 server.py
     restart: on-failure
-    environment:
-      - GRPC_VERBOSITY=INFO
-      - GRPC_TRACE=http
+    environment: {}

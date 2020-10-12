@@ -16,3 +16,4 @@ if __name__ == "__main__":
         batch = BatchPolypDetectionRequest(requests=requests)
         responses = stub.BatchPolypDetect(batch)
         print(responses)
+        print(len(responses.responses))
