@@ -13,6 +13,6 @@ engine:
     min_size: 100
     threshold: 200
 
-workers: 2
+workers: 1
 concurrency: 1
 port: 12001

@@ -1,7 +1,12 @@
 version: "3.5"
 
+networks:
+  default:
+    external:
+      name: polyplabeler
+
 services:
-  server:
+  polypnet:
     restart: always
     image: asia.gcr.io/vdsensecloud/polypnet/service:latest
     build:

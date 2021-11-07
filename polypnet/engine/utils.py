@@ -11,9 +11,9 @@ def polyps_from_mask(mask, orig_shape, input_shape, min_size, threshold) -> List
     coef_y = orig_shape[0] / input_shape[0]
     coef_x = orig_shape[1] / input_shape[1]
 
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5, 5))
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3, 3))
     mask = cv2.dilate(mask, kernel, iterations=5)
-    mask = cv2.erode(mask, kernel, iterations=5)
+    mask = cv2.erode(mask, kernel, iterations=7)
 
     _, thresh = cv2.threshold(mask[:, :, 0], 50, 255, 0)
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
