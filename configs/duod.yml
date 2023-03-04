@@ -1,0 +1,11 @@
+engine:
+  type: duod
+  kwargs:
+    model_dir: models/duounet-220406
+    input_shape: [480, 480]
+    min_size: 1
+    threshold: 1
+
+workers: 2
+concurrency: 1
+port: 12004

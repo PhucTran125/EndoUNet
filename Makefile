@@ -21,11 +21,9 @@ stop:
 	docker-compose down
 
 dev: build
-	docker-compose -f docker-compose.yml\
-		-f docker-compose.dev.yml down
-	docker-compose -f docker-compose.yml\
-		-f docker-compose.dev.yml up -d
-	docker-compose logs -f || true
+	docker-compose -f docker-compose.dev.yml down
+	docker-compose -f docker-compose.dev.yml up -d
+	docker-compose -f docker-compose.dev.yml logs -f || true
 
 deploy: stop
 	docker-compose -f docker-compose.yml up -d
@@ -40,3 +38,14 @@ pull-models:
 
 push-models:
 	gsutil rsync -R ./models gs://vdsense-model-repo/polypnet-models/polypnet
+
+RFLAGS=
+# RTARGET=s@172.18.0.1
+RTARGET=sangdv@202.191.56.249
+
+RTARGET_DIR=~/polyp-service/
+
+rpush:
+	rsync -avh --progress $(RFLAGS) \
+		--exclude-from='.pushignore' \
+		. $(RTARGET):$(RTARGET_DIR)

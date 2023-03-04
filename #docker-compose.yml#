@@ -1,0 +1,27 @@
+version: "3.5"
+
+services:
+  server:
+    restart: always
+    image: asia.gcr.io/vdsensecloud/polypnet/service:latest
+    build:
+      context: .
+      network: host
+    ports:
+      - 12001:12001
+    volumes:
+      - ./configs:/app/configs:ro
+      - ./models:/app/models:ro
+      - ./logs:/app/logs
+
+  server-eso:
+    restart: always
+    image: asia.gcr.io/vdsensecloud/polypnet/service:latest
+    environment:
+      CONFIG: configs/eso.yml
+    ports:
+      - 12002:12002
+    volumes:
+      - ./configs:/app/configs:ro
+      - ./models:/app/models:ro
+      - ./logs:/app/logs

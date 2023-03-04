@@ -20,7 +20,12 @@ class PolypDetectionService(PolypDetectionServiceServicer):
 
     def BatchPolypDetect(self, request: BatchPolypDetectionRequest, context):
         with Timer() as t:
-            responses = self.engine.predict_polyps(request)
+            try:
+                logger.info("hello")
+                responses = self.engine.predict_polyps(request)
+            except Exception as e:
+                logger.exception("Error during detection")
+                raise e
         logger.debug(f'Took {t.elapsed:.2f}s')
         return responses
 
@@ -50,12 +55,15 @@ def proc_main(configs):
     )
     server.add_insecure_port('[::]:%d' % configs['port'])
     server.start()
+    logger.info(server)
     logger.info(f'Serving on port {configs["port"]}')
     server.wait_for_termination()
 
 
 if __name__ == "__main__":
-    with open('configs/config.yml', 'rt') as f:
+    config_file = os.environ.get("CONFIG", "configs/duod.yml")
+    logger.info(f'Loading config file {config_file}')
+    with open(config_file, 'rt') as f:
         configs = yaml.full_load(f)
 
     procs = []

@@ -1,0 +1,11 @@
+engine:
+  type: onnx2
+  kwargs:
+    model_dir: models/esopranet-211107
+    input_shape: [352, 352]
+    min_size: 1
+    threshold: 1
+
+workers: 2
+concurrency: 1
+port: 12002

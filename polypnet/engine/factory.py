@@ -2,11 +2,17 @@ from loguru import logger
 
 from .tf import TensorflowPolypnetEngine
 from .base import IPolypnetEngine
-from .onnx_ import OnnxPolypnetEngine
+from .onnx_ import OnnxPolypnetEngine, OnnxPolypnetEngine2
+from .ug import UgUNetEngine
+from .duod import DuodUNetEngine
 
 __TYPE_MAP = {
     'tf': TensorflowPolypnetEngine,
-    'onnx': OnnxPolypnetEngine
+    'onnx': OnnxPolypnetEngine,
+    'onnx2': OnnxPolypnetEngine2,
+    'ugu': UgUNetEngine,
+    'duod': DuodUNetEngine,
+    'ug': DuodUNetEngine
 }
 
 

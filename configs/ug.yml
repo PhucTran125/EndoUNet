@@ -1,0 +1,11 @@
+engine:
+  type: ug
+  kwargs:
+    model_dir: models/ugnet-220611
+    input_shape: [480, 480]
+    min_size: 20
+    threshold: 1
+
+workers: 2
+concurrency: 1
+port: 8890

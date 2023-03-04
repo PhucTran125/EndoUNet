@@ -13,7 +13,57 @@ services:
       context: .
       network: host
     ports:
-      - 12001:12001
+      - 8888:8888
+    environment:
+      CONFIG: configs/config.yml
+    volumes:
+      - ./configs:/app/configs:ro
+      - ./models:/app/models:ro
+      - ./logs:/app/logs
+
+  # polypnet-eso:
+  #   restart: always
+  #   image: asia.gcr.io/vdsensecloud/polypnet/service:latest
+  #   environment:
+  #     CONFIG: configs/eso.yml
+  #   ports:
+  #     - 12002:12002
+  #   volumes:
+  #     - ./configs:/app/configs:ro
+  #     - ./models:/app/models:ro
+  #     - ./logs:/app/logs
+
+  # polypnet-ugu:
+  #   restart: always
+  #   image: asia.gcr.io/vdsensecloud/polypnet/service:latest
+  #   environment:
+  #     CONFIG: configs/ugunet.yml
+  #   ports:
+  #     - 12003:12003
+  #   volumes:
+  #     - ./configs:/app/configs:ro
+  #     - ./models:/app/models:ro
+  #     - ./logs:/app/logs
+
+  # duodnet:
+  #   restart: always
+  #   image: asia.gcr.io/vdsensecloud/polypnet/service:latest
+  #   environment:
+  #     CONFIG: configs/duod.yml
+  #   ports:
+  #     - 12004:12004
+  #   volumes:
+  #     - ./configs:/app/configs:ro
+  #     - ./models:/app/models:ro
+  #     - ./logs:/app/logs
+      
+  ugnet:
+    restart: always
+    image: asia.gcr.io/vdsensecloud/polypnet/service:latest
+    environment:
+      CONFIG: configs/ug.yml
+    ports:
+      - 8890:8890
     volumes:
       - ./configs:/app/configs:ro
       - ./models:/app/models:ro

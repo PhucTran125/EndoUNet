@@ -1,0 +1,10 @@
+engine:
+  type: ugu
+  kwargs:
+    model_dir: models/ugunet-211210
+    min_size: 1
+    threshold: 1
+
+workers: 2
+concurrency: 1
+port: 12003

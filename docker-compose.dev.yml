@@ -2,10 +2,18 @@ version: "3.5"
 
 services:
   server:
+    image: asia.gcr.io/vdsensecloud/polypnet/service:latest
+    build:
+      context: .
+      network: host
+    ports:
+      - 12002:12002
+      - 12001:12001
     volumes:
       - type: bind
         target: /app
         source: ./
+    environment:
+      CONFIG: configs/eso.yml
     command: watchmedo auto-restart -d . --interval 3 -- python3 server.py
     restart: on-failure
-    environment: {}
