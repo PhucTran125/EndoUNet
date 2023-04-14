@@ -12,7 +12,7 @@ from polypnet.grpc.detect_pb2 import Point, PolypDetectionResponse,\
     Polyp, PolypDetectionRequest, BatchPolypDetectionRequest,\
     BatchPolypDetectionResponse
 from .base import IPolypnetEngine
-from . import utils
+from . import utils, softmax, sigmoid
 
 
 class DuodUNetEngine(IPolypnetEngine):
@@ -48,14 +48,27 @@ class DuodUNetEngine(IPolypnetEngine):
         images_bytes = [req.image.content for req in requests]
         images, orig_shapes = self._preprocess(images_bytes)
 
+        pos_list = []
+        les_list = []
+        hp_list = []
         masks_list = []
         for image in images:
             input = self._sess.get_inputs()[0]
             feed = {
                 input.name: image
             }
-            mask = self._sess.run([self._sess.get_outputs()[0].name], feed)[0][0]
-            # mask = 1 / (1 + np.exp(-mask))
+            # mask = self._sess.run([self._sess.get_outputs()[0].name], feed)[0][0]
+
+            infer_result = self._sess.run([], {input_name: img})
+            pos = softmax(infer_result[0][0])
+            les = softmax(infer_result[1][0])
+            hp = sigmoid(infer_result[2][0])
+            hp = 1 if hp > 0.5 else 0
+            mask = infer_result[3][0]
+
+            pos_list.append(pos)
+            les_list.append(les)
+            hp_list.append(hp)
             masks_list.append(mask)
 
         masks = np.stack(masks_list, axis=0)

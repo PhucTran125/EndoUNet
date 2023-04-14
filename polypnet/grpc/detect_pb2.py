@@ -19,10 +19,115 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0c\x64\x65tect.proto\x12\x1a\x63om.vdsense.polypnet.proto\"\x18\n\x05Image\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\"I\n\x15PolypDetectionRequest\x12\x30\n\x05image\x18\x01 \x01(\x0b\x32!.com.vdsense.polypnet.proto.Image\"a\n\x1a\x42\x61tchPolypDetectionRequest\x12\x43\n\x08requests\x18\x01 \x03(\x0b\x32\x31.com.vdsense.polypnet.proto.PolypDetectionRequest\"\x1d\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"T\n\x05Polyp\x12\x37\n\x0c\x62oundingPoly\x18\x01 \x03(\x0b\x32!.com.vdsense.polypnet.proto.Point\x12\x12\n\nconfidence\x18\x02 \x01(\x02\"K\n\x16PolypDetectionResponse\x12\x31\n\x06polyps\x18\x01 \x03(\x0b\x32!.com.vdsense.polypnet.proto.Polyp\"d\n\x1b\x42\x61tchPolypDetectionResponse\x12\x45\n\tresponses\x18\x01 \x03(\x0b\x32\x32.com.vdsense.polypnet.proto.PolypDetectionResponse2\x9d\x02\n\x15PolypDetectionService\x12\x83\x01\n\x10\x42\x61tchPolypDetect\x12\x36.com.vdsense.polypnet.proto.BatchPolypDetectionRequest\x1a\x37.com.vdsense.polypnet.proto.BatchPolypDetectionResponse\x12~\n\x11StreamPolypDetect\x12\x31.com.vdsense.polypnet.proto.PolypDetectionRequest\x1a\x32.com.vdsense.polypnet.proto.PolypDetectionResponse(\x01\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\x0c\x64\x65tect.proto\x12\x1a\x63om.vdsense.polypnet.proto\"\x18\n\x05Image\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\"I\n\x15PolypDetectionRequest\x12\x30\n\x05image\x18\x01 \x01(\x0b\x32!.com.vdsense.polypnet.proto.Image\"a\n\x1a\x42\x61tchPolypDetectionRequest\x12\x43\n\x08requests\x18\x01 \x03(\x0b\x32\x31.com.vdsense.polypnet.proto.PolypDetectionRequest\"\x1d\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"T\n\x05Polyp\x12\x37\n\x0c\x62oundingPoly\x18\x01 \x03(\x0b\x32!.com.vdsense.polypnet.proto.Point\x12\x12\n\nconfidence\x18\x02 \x01(\x02\"\xcb\x01\n\x0e\x41natomicalSite\"\xb8\x01\n\x06Values\x12\x0b\n\x07PHARYNX\x10\x00\x12\r\n\tESOPHAGUS\x10\x01\x12\n\n\x06\x43\x41RDIA\x10\x02\x12\x10\n\x0cGASTRIC_BODY\x10\x03\x12\x12\n\x0eGASTRIC_FUNDUS\x10\x04\x12\x12\n\x0eGASTRIC_ANTRUM\x10\x05\x12\x15\n\x11GREATER_CURVATURE\x10\x06\x12\x14\n\x10LESSER_CURVATURE\x10\x07\x12\x11\n\rDUODENUM_BULB\x10\x08\x12\x0c\n\x08\x44UODENUM\x10\t\"|\n\nLesionType\"n\n\x06Values\x12\x16\n\x12REFLUX_ESOPHAGITIS\x10\x00\x12\x15\n\x11\x45SOPHAGEAL_CANCER\x10\x01\x12\r\n\tGASTRITIS\x10\x02\x12\x12\n\x0eSTOMACH_CANCER\x10\x03\x12\x12\n\x0e\x44UODENAL_ULCER\x10\x04\"\xeb\x01\n\x16PolypDetectionResponse\x12\x31\n\x06polyps\x18\x01 \x03(\x0b\x32!.com.vdsense.polypnet.proto.Polyp\x12I\n\x0e\x61natomicalSite\x18\x02 \x01(\x0e\x32\x31.com.vdsense.polypnet.proto.AnatomicalSite.Values\x12\x41\n\nlesionType\x18\x03 \x01(\x0e\x32-.com.vdsense.polypnet.proto.LesionType.Values\x12\x10\n\x08hpStatus\x18\x04 \x01(\x08\"d\n\x1b\x42\x61tchPolypDetectionResponse\x12\x45\n\tresponses\x18\x01 \x03(\x0b\x32\x32.com.vdsense.polypnet.proto.PolypDetectionResponse2\x9d\x02\n\x15PolypDetectionService\x12\x83\x01\n\x10\x42\x61tchPolypDetect\x12\x36.com.vdsense.polypnet.proto.BatchPolypDetectionRequest\x1a\x37.com.vdsense.polypnet.proto.BatchPolypDetectionResponse\x12~\n\x11StreamPolypDetect\x12\x31.com.vdsense.polypnet.proto.PolypDetectionRequest\x1a\x32.com.vdsense.polypnet.proto.PolypDetectionResponse(\x01\x30\x01\x62\x06proto3'
 )
 
 
+
+_ANATOMICALSITE_VALUES = _descriptor.EnumDescriptor(
+  name='Values',
+  full_name='com.vdsense.polypnet.proto.AnatomicalSite.Values',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='PHARYNX', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ESOPHAGUS', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CARDIA', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GASTRIC_BODY', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GASTRIC_FUNDUS', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GASTRIC_ANTRUM', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GREATER_CURVATURE', index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LESSER_CURVATURE', index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DUODENUM_BULB', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DUODENUM', index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=381,
+  serialized_end=565,
+)
+_sym_db.RegisterEnumDescriptor(_ANATOMICALSITE_VALUES)
+
+_LESIONTYPE_VALUES = _descriptor.EnumDescriptor(
+  name='Values',
+  full_name='com.vdsense.polypnet.proto.LesionType.Values',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='REFLUX_ESOPHAGITIS', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ESOPHAGEAL_CANCER', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='GASTRITIS', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STOMACH_CANCER', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DUODENAL_ULCER', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=581,
+  serialized_end=691,
+)
+_sym_db.RegisterEnumDescriptor(_LESIONTYPE_VALUES)
 
 
 _IMAGE = _descriptor.Descriptor(
@@ -199,6 +304,58 @@ _POLYP = _descriptor.Descriptor(
 )
 
 
+_ANATOMICALSITE = _descriptor.Descriptor(
+  name='AnatomicalSite',
+  full_name='com.vdsense.polypnet.proto.AnatomicalSite',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _ANATOMICALSITE_VALUES,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=362,
+  serialized_end=565,
+)
+
+
+_LESIONTYPE = _descriptor.Descriptor(
+  name='LesionType',
+  full_name='com.vdsense.polypnet.proto.LesionType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _LESIONTYPE_VALUES,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=567,
+  serialized_end=691,
+)
+
+
 _POLYPDETECTIONRESPONSE = _descriptor.Descriptor(
   name='PolypDetectionResponse',
   full_name='com.vdsense.polypnet.proto.PolypDetectionResponse',
@@ -214,6 +371,27 @@ _POLYPDETECTIONRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='anatomicalSite', full_name='com.vdsense.polypnet.proto.PolypDetectionResponse.anatomicalSite', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='lesionType', full_name='com.vdsense.polypnet.proto.PolypDetectionResponse.lesionType', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hpStatus', full_name='com.vdsense.polypnet.proto.PolypDetectionResponse.hpStatus', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -226,8 +404,8 @@ _POLYPDETECTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=361,
-  serialized_end=436,
+  serialized_start=694,
+  serialized_end=929,
 )
 
 
@@ -258,20 +436,26 @@ _BATCHPOLYPDETECTIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=438,
-  serialized_end=538,
+  serialized_start=931,
+  serialized_end=1031,
 )
 
 _POLYPDETECTIONREQUEST.fields_by_name['image'].message_type = _IMAGE
 _BATCHPOLYPDETECTIONREQUEST.fields_by_name['requests'].message_type = _POLYPDETECTIONREQUEST
 _POLYP.fields_by_name['boundingPoly'].message_type = _POINT
+_ANATOMICALSITE_VALUES.containing_type = _ANATOMICALSITE
+_LESIONTYPE_VALUES.containing_type = _LESIONTYPE
 _POLYPDETECTIONRESPONSE.fields_by_name['polyps'].message_type = _POLYP
+_POLYPDETECTIONRESPONSE.fields_by_name['anatomicalSite'].enum_type = _ANATOMICALSITE_VALUES
+_POLYPDETECTIONRESPONSE.fields_by_name['lesionType'].enum_type = _LESIONTYPE_VALUES
 _BATCHPOLYPDETECTIONRESPONSE.fields_by_name['responses'].message_type = _POLYPDETECTIONRESPONSE
 DESCRIPTOR.message_types_by_name['Image'] = _IMAGE
 DESCRIPTOR.message_types_by_name['PolypDetectionRequest'] = _POLYPDETECTIONREQUEST
 DESCRIPTOR.message_types_by_name['BatchPolypDetectionRequest'] = _BATCHPOLYPDETECTIONREQUEST
 DESCRIPTOR.message_types_by_name['Point'] = _POINT
 DESCRIPTOR.message_types_by_name['Polyp'] = _POLYP
+DESCRIPTOR.message_types_by_name['AnatomicalSite'] = _ANATOMICALSITE
+DESCRIPTOR.message_types_by_name['LesionType'] = _LESIONTYPE
 DESCRIPTOR.message_types_by_name['PolypDetectionResponse'] = _POLYPDETECTIONRESPONSE
 DESCRIPTOR.message_types_by_name['BatchPolypDetectionResponse'] = _BATCHPOLYPDETECTIONRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -311,6 +495,20 @@ Polyp = _reflection.GeneratedProtocolMessageType('Polyp', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Polyp)
 
+AnatomicalSite = _reflection.GeneratedProtocolMessageType('AnatomicalSite', (_message.Message,), {
+  'DESCRIPTOR' : _ANATOMICALSITE,
+  '__module__' : 'detect_pb2'
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.AnatomicalSite)
+  })
+_sym_db.RegisterMessage(AnatomicalSite)
+
+LesionType = _reflection.GeneratedProtocolMessageType('LesionType', (_message.Message,), {
+  'DESCRIPTOR' : _LESIONTYPE,
+  '__module__' : 'detect_pb2'
+  # @@protoc_insertion_point(class_scope:com.vdsense.polypnet.proto.LesionType)
+  })
+_sym_db.RegisterMessage(LesionType)
+
 PolypDetectionResponse = _reflection.GeneratedProtocolMessageType('PolypDetectionResponse', (_message.Message,), {
   'DESCRIPTOR' : _POLYPDETECTIONRESPONSE,
   '__module__' : 'detect_pb2'
@@ -334,8 +532,8 @@ _POLYPDETECTIONSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=541,
-  serialized_end=826,
+  serialized_start=1034,
+  serialized_end=1319,
   methods=[
   _descriptor.MethodDescriptor(
     name='BatchPolypDetect',

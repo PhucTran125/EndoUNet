@@ -24,8 +24,8 @@ COPY requirements.txt /app/
 RUN pip3 install -r requirements.txt
 
 ENV GIT_SSL_NO_VERIFY=1
-ARG VDIMG_VERSION="v0.1.1"
-RUN pip3 install git+https://gitlab.com/lanPN85/vdimg@${VDIMG_VERSION}
+# ARG VDIMG_VERSION="v0.1.1"
+RUN pip3 install git+https://gitlab.com/lanPN85/vdimg
 
 COPY . /app
 CMD python3 server.py

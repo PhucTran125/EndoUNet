@@ -97,6 +97,9 @@ class OnnxPolypnetEngine2(OnnxPolypnetEngine):
         masks = np.stack((masks,) * 3, axis=-1)
 
         responses = []
+        anatomicalSite=1
+        lesionType=2
+        hpStatus=True
         for i in range(masks.shape[0]):
             mask = masks[i, :, :]
             polyps = utils.polyps_from_mask(
@@ -104,7 +107,7 @@ class OnnxPolypnetEngine2(OnnxPolypnetEngine):
                 self.input_shape, self.min_size,
                 self.threshold
             )
-            resp = PolypDetectionResponse(polyps=polyps)
+            resp = PolypDetectionResponse(polyps=polyps, anatomicalSite=anatomicalSite, lesionType=lesionType, hpStatus=hpStatus)
             responses.append(resp)
 
         return BatchPolypDetectionResponse(responses=responses)

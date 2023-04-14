@@ -2,10 +2,10 @@ import numpy as np
 
 from PIL import Image as PilImage, ImageDraw
 
-from polypnet.engine import PolypnetEngine
+from polypnet.engine import PolypnetEngine    
 from polypnet.grpc.detect_pb2 import PolypDetectionRequest, Image
 
-engine = PolypnetEngine('models/polypnet-200116')
+engine = PolypnetEngine('models/esopranet-211107')
 
 with open('tests/data/sample-1.jpg', 'rb') as f:
     img = f.read()

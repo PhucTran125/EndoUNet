@@ -23,8 +23,36 @@ message Polyp {
     float confidence = 2;
 }
 
+message AnatomicalSite {
+    enum Values {
+        PHARYNX = 0;
+        ESOPHAGUS = 1;
+        CARDIA = 2;
+        GASTRIC_BODY = 3;
+        GASTRIC_FUNDUS = 4;
+        GASTRIC_ANTRUM = 5;
+        GREATER_CURVATURE = 6;
+        LESSER_CURVATURE = 7;
+        DUODENUM_BULB = 8;
+        DUODENUM = 9;
+    }
+}
+
+message LesionType {
+    enum Values {
+        REFLUX_ESOPHAGITIS = 0;
+        ESOPHAGEAL_CANCER = 1;
+        GASTRITIS = 2;
+        STOMACH_CANCER = 3;
+        DUODENAL_ULCER = 4;
+    }
+}
+
 message PolypDetectionResponse {
     repeated Polyp polyps = 1;
+    AnatomicalSite.Values anatomicalSite = 2;
+    LesionType.Values lesionType = 3;
+    bool hpStatus = 4;
 }
 
 message BatchPolypDetectionResponse {

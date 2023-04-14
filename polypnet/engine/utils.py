@@ -52,3 +52,13 @@ def polyps_from_mask(mask, orig_shape, input_shape, min_size, threshold) -> List
         polyps.append(polyp)
 
     return polyps
+
+
+def softmax(x):
+    """Compute softmax values for each sets of scores in x."""
+    e_x = np.exp(x - np.max(x))
+    return e_x / e_x.sum()
+
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
